@@ -40,16 +40,16 @@ public class CategoriesController
     }
 
     // add the appropriate annotation for a get action
-    @RequestMapping(path="/categories/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/{id}", method = RequestMethod.GET)
     public Category getById(@PathVariable int id)
     {
-        for (Category c : this.categories){
-            if(c.getCategoryId() == id){
-                return c;
-                // get the category by id
-            }
-        }
-        return null;
+//        for (Category c : categories){
+//            if(c.getCategoryId() == id){
+//                return c;
+//                // get the category by id
+//            }
+//        }
+        return categoryDao.getById(id);
     }
 
     // the url to return all products in category 1 would look like this
