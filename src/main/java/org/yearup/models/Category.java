@@ -8,6 +8,7 @@ public class Category
 
     public Category()
     {
+        //does nothing
     }
 
     public Category(int categoryId, String name, String description)
