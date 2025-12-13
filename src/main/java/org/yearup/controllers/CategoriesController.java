@@ -19,7 +19,7 @@ import java.util.List;
 @CrossOrigin
 public class CategoriesController
 {
-    private CategoryDao categoryDao;
+    private final CategoryDao categoryDao;
     private ProductDao productDao;
 
     private List<Category> categories;
@@ -36,7 +36,7 @@ public class CategoriesController
     public List<Category> getAll()
     {
         // find and return all categories
-        return categories;
+        return categoryDao.getAllCategories();
     }
 
     // add the appropriate annotation for a get action
