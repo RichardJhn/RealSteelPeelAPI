@@ -32,7 +32,7 @@ public class CategoriesController
         this.categoryDao = categoryDao;
     }
 
-    @RequestMapping(path="/categories", method = RequestMethod.GET)
+    @RequestMapping(path="", method = RequestMethod.GET)
     public List<Category> getAll()
     {
         // find and return all categories
@@ -40,7 +40,7 @@ public class CategoriesController
     }
 
     // add the appropriate annotation for a get action
-    @RequestMapping(path="/categories{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/categories/{id}", method = RequestMethod.GET)
     public Category getById(@PathVariable int id)
     {
         for (Category c : this.categories){
