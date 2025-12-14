@@ -21,7 +21,7 @@ import java.util.List;
 public class CategoriesController
 {
     private final CategoryDao categoryDao;
-    private ProductDao productDao;
+    private final ProductDao productDao;
 
     private List<Category> categories;
 
@@ -29,8 +29,9 @@ public class CategoriesController
 
     // add the appropriate annotation for a get action
     @Autowired
-    public CategoriesController(CategoryDao categoryDao){
+    public CategoriesController(CategoryDao categoryDao, ProductDao productDao){
         this.categoryDao = categoryDao;
+        this.productDao = productDao;
     }
 
     @RequestMapping(path="", method = RequestMethod.GET)
