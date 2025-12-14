@@ -8,6 +8,7 @@ import org.yearup.models.Category;
 import org.yearup.models.Product;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 // add the annotations to make this a REST controller - todo done
@@ -43,22 +44,18 @@ public class CategoriesController
     @RequestMapping(path="/{id}", method = RequestMethod.GET)
     public Category getById(@PathVariable int id)
     {
-//        for (Category c : categories){
-//            if(c.getCategoryId() == id){
-//                return c;
-//                // get the category by id
-//            }
-//        }
+
         return categoryDao.getById(id);
     }
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
-    @GetMapping("{categoryId}/products")
+    @GetMapping("/{categoryId}/products")
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
+
         // get a list of product by categoryId
-        return null;
+        return productDao.listByCategoryId(categoryId);
     }
 
     // add annotation to call this method for a POST action

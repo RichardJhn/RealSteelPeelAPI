@@ -57,14 +57,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             statement.setInt(1,categoryId);
 
             ResultSet row = statement.executeQuery();
-//            if (row.next())
-//            {
-//                return new Category(
-//                        row.getInt("category_id"),
-//                        row.getString("name"),
-//                        row.getString("description")
-//                        );
-//            }
+
             if (row.next())
             {
                 return mapRow(row);
@@ -77,6 +70,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         // get category by id
         return null;
     }
+
+
 
     @Override
     public Category create(Category category)
