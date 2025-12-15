@@ -1,6 +1,8 @@
 package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.data.CategoryDao;
 import org.yearup.data.ProductDao;
@@ -8,6 +10,7 @@ import org.yearup.models.Category;
 import org.yearup.models.Product;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,7 @@ public class CategoriesController
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
+
     @GetMapping("/{categoryId}/products")
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
@@ -61,7 +65,10 @@ public class CategoriesController
 
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
-    public Category addCategory(@RequestBody Category category)
+    @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category addCategory(@RequestBody Category category ) throws SQLException
     {
         // insert the category
         return categoryDao.create(category);

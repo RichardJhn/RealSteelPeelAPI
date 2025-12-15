@@ -80,7 +80,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         String sql = "INSERT INTO categories(category_id, name, description) VALUES(?,?,?);";
         try (Connection connection = getConnection())
         {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement statement = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setInt(1,category.getCategoryId());
             statement.setString(2,category.getName());
             statement.setString(3, category.getDescription());
@@ -94,7 +94,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
                     return getById(orderId);
                 }
             }
-
+    
         }
         catch (SQLException e){
             throw new RuntimeException(e);
