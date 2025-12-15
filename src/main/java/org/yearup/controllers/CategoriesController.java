@@ -68,6 +68,9 @@ public class CategoriesController
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
 
+        if(categoryDao.getById(categoryId) == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
+        }
         // get a list of product by categoryId
         return productDao.listByCategoryId(categoryId);
     }
