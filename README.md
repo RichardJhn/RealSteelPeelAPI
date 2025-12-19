@@ -32,6 +32,10 @@ Small front-end fix
 - The search function was showing 2 minimum price options. I was able to look through the HTML and change it to maximum.
 <img width="350" height="332" alt="Screenshot 2025-12-19 004930" src="https://github.com/user-attachments/assets/086d85c7-7b05-4d95-81ba-123c6b457948" />
 
+- This is where the error was. The front end code had 2 minimums instead of maximum as I fixed in this picture.
+<img width="979" height="186" alt="Front end error" src="https://github.com/user-attachments/assets/657401e6-6917-4255-94d0-81d0d359f112" />
+
+
 
 ------------------------------------------------------------------------------------------------------
 
